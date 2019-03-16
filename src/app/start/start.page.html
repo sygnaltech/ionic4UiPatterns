@@ -8,8 +8,6 @@
   
   <ion-content>
 
-    <!-- <markdown [src]="'/assets/start.md'" ngPreserveWhitespaces>
-    </markdown> -->
 
       <ion-card class="welcome-card">
         <ion-card-header>
@@ -17,23 +15,11 @@
           <ion-card-title>IONIC 4 UI Patterns</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p>This project is a collection of basic UI patterns, intended to focus on the following;</p>
-          <ul>
-            <li>Use of a single object (DTO) for transporting the entered data to the API.</li>
-            <li>Full form data validation, with error messages and error styling.</li>
-            <li>Effective data-binding from the object properties, to form fields</li>
-            <li>No errors on entry into the form, due to null fields.</li>
-            <li>Re-initialize the form on each entry so that prior data or validation state is reset.</li>
-            <li>Handling and binding of ENUM field data.</li>
-          </ul>
-          <h1>CREATE new data item, for insertion in a back-end system</h1>
-          <h1>UPDATE an existing data item, in a back-end system</h1>
-          <ol>
-            <li>Binding to a custom object (CREATE).</li>
-            <li>Binding to and from a custom object (UPDATE).</li>
-            <li>Binding to and from a custom object, with an enum field (UPDATE).</li>
-            <li>Binding to and from a custom object, with an enum field, and form validation (UPDATE).</li>
-          </ol>
+
+            <markdown [src]="'/assets/start.md'" ngPreserveWhitespaces>
+            </markdown>
+        
+
         </ion-card-content>
       </ion-card>
   </ion-content>

@@ -19,6 +19,8 @@ npm install ngx-markdown --save
 
 Edit your `angular.json` file to add the following script; 
 
+_This seems optional?_
+
 ```
 in angular.json, add
 "scripts": [
@@ -26,12 +28,12 @@ in angular.json, add
 ]
 ```
 
-In page's `.module.ts`,
+In each page where you want to use markdown, edit the page's `.module.ts`,
 
 
 ```
 import { MarkdownModule } from 'ngx-markdown';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 ```
 
 ```
@@ -39,7 +41,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
   imports: [
     ...
     HttpClientModule,
-    MarkdownModule.forRoot({ loader: HttpClient }),
+    MarkdownModule.forRoot({ loader: HttpClientModule }),
   ],
   ...
 })
@@ -47,13 +49,15 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 # Major Caveats
 
-Cannot use certain template / code elements `markdown` content,
-because it gets parsed at the template level as angular.
-This is particularly if it's inline content in a markdown element.
+There are two basic ways to use the `ngx-markdown` library; 
 
-https://ngrefs.com/en/latest/templates/ngnonbindable
+1. **Inline**. Embed markdown inline in your HTML page, inside the `<markdown>` element.
+1. **External**. Create an `.md` file, and reference it from your `<markdown>` element.
 
-`ngNonBindable` also does not work here, as in;
+The *inline* approach seems to have very little use in IONIC-4 / Angular-7, because IONIC's (or Angular's?) parsers attempt to parse the markdown content as part of the template, and it breaks on basic things such as angle brackets (`<>`) or curly braces (`{}`).  
+Because of this, the *inline* approach seems particularly fragile.
+
+Note that making the `<markdown>` element `ngNonBindable` does not work here, as in;
 
 ```
 <markdown ngNonBindable ngPreserveWhitespaces>
@@ -61,10 +65,13 @@ My { code }.
 </markdown>
 ```
 
+https://ngrefs.com/en/latest/templates/ngnonbindable
+
 The above will cause a compiler error, and will also prevent the markdown parsing from occurring. 
 
-It may be possible to circumvent this using external referencing to an .md file,
-however that has routing issues in IONIC-4, in that the .md's need to be directly exposed.
+The *external* approach avoids these parsing problems, however the `.md` files must be accessible by HTTP.
+This means setting up routing to them, or storing them in your `/assets/` folder and referencing them there.
+
 
 # Best Practices
 
