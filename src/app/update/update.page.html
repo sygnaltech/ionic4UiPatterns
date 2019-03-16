@@ -1,0 +1,76 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaulthref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>UPDATE Data Item</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+  
+      <ion-card text center>
+        <ion-card-header>
+          My Object Data ( TestData )
+        </ion-card-header>
+        <ion-card-content>
+  
+          <ion-list>
+            <ion-item>
+              <ion-label floating>Numeric</ion-label>
+              <ion-input type="number" [(ngModel)]="data.num"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>String</ion-label>
+              <ion-input type="text" [(ngModel)]="data.name"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Date (UTC)</ion-label>
+              <ion-datetime [(ngModel)]="data.date"></ion-datetime>
+            </ion-item>          
+            <ion-item>
+              <ion-label floating>Boolean</ion-label>
+              <ion-toggle [(ngModel)]="data.bool"></ion-toggle>
+            </ion-item>
+          </ion-list>
+      
+          <ion-button fill="outline" (click)="updateItem()">Update Item</ion-button>
+          <ion-button fill="outline" (click)="showItem()">Show Item</ion-button>
+  
+        </ion-card-content>
+      </ion-card>
+  
+      <ion-card text center>
+        <ion-card-header>
+          Notes
+        </ion-card-header>
+        <ion-card-content>
+      
+          <p>Pattern;</p>
+          <ul>
+            <li>Uses a simple class to store page data. Typically this would be transported to an API for CRUD operations.</li>
+            <li>Object fields are directly bound through [(ngModel)]</li>
+            <li>Object fields are directly bound through [(ngModel)]</li>
+            <li>NO data validation</li>
+          </ul>
+          <p>Notes;</p>
+          <ul>
+            <li>View the browser's console to see the object content on submit.</li>
+            <li>The type of data stored in the object is unchecked by the object. You can store a string in a number field. To preserve type, make sure to use the right UI component</li>
+            <ul>
+              <li>ion-input type="text" emits text</li>
+              <li>ion-toggle emits booleans</li>>
+              <li>ion-datetime emits datetimes as strings</li>
+              <li>ion-input type="number" emits numeric values</li>
+            </ul>
+            <li>It does not appear to matter what kind data is entered, in the object it all appears as strings.</li>
+            <li>This means the object itself provides no type checking, and this must be done at e.g. the Mongoose layer.</li>
+            <li>IONIC-4 uses strings to store dates.</li>
+            <li>ion-datepicker defaults to showing only the date in display and picker, however if the date data has a time component, it is still preserved, even across edits.</li>
+          </ul>
+          
+        </ion-card-content>
+      </ion-card>
+  
+  </ion-content>
+  

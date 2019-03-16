@@ -8,42 +8,69 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'start',
         children: [
           {
             path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren: '../start/start.module#StartPageModule'
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'markdown',
         children: [
           {
             path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
+            loadChildren: '../markdown/markdown.module#MarkdownPageModule'
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'create',
         children: [
           {
             path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
+            loadChildren: '../create/create.module#CreatePageModule'
+          }
+        ]
+      },
+      {
+        path: 'update',
+        children: [
+          {
+            path: '',
+            loadChildren: '../update/update.module#UpdatePageModule'
+          }
+        ]
+      },
+      {
+        path: 'enums',
+        children: [
+          {
+            path: '',
+            loadChildren: '../enums/enums.module#EnumsPageModule'
+          }
+        ]
+      },
+      {
+        path: 'validate',
+        children: [
+          {
+            path: '',
+            loadChildren: '../validate/validate.module#ValidatePageModule'
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/start',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/start',
     pathMatch: 'full'
   }
 ];
