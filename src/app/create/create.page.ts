@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TestData } from 'models/test.dto';
-import { MarkdownModule } from 'ngx-markdown';
+// import { MarkdownModule } from 'ngx-markdown';
 @Component({
   selector: 'app-create',
   templateUrl: './create.page.html',
@@ -46,17 +46,30 @@ export class CreatePage implements OnInit {
 
   }
 
-  ionViewWillEnter() {
+  // ionViewWillEnter() {
 
-    // Occurs on every re-entry into this page,
-    // e.g. user navigates away and then returns to the page
-    // in our scenario, we want the data to clear again.
+  //   // Occurs on every re-entry into this page,
+  //   // e.g. user navigates away and then returns to the page
 
-    console.log('ionViewWillEnter (enter): ', this.data);
+  //   console.log('ionViewWillEnter (enter): ', this.data);
 
+  //   // In our scenario, we want the data to clear again.
+  //   this.initializeData();
+
+  //   console.log('ionViewWillEnter (leave): ', this.data);
+
+  // }
+
+  ionViewWillLeave() {
+
+    // Occurs every navigation away from this page.
+
+    console.log('ionViewWillLeave (enter): ', this.data);
+
+    // In our scenario, we want the data to clear again.
     this.initializeData();
 
-    console.log('ionViewWillEnter (leave): ', this.data);
+    console.log('ionViewWillLeave (leave): ', this.data);
 
   }
 

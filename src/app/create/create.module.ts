@@ -6,7 +6,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { CreatePage } from './create.page';
+
 import { MarkdownModule } from 'ngx-markdown';
+import { HttpClientModule } from '@angular/common/http';
+
 const routes: Routes = [
   {
     path: '',
@@ -20,7 +23,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    MarkdownModule.forRoot(),
+    HttpClientModule,
+    MarkdownModule.forRoot({ loader: HttpClientModule }),
   ],
   declarations: [CreatePage]
 })

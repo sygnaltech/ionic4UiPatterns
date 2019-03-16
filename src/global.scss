@@ -9,3 +9,28 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+.welcome-card {
+    background: #cccccc;
+
+    ion-card-title {
+        color: white;
+    }
+
+    h1, h2, h3, h4, h5 {
+        color: var(--ion-color-primary-shade);
+        margin-top: 0.6em;
+        margin-bottom: 0.6em;
+    }
+
+    p {
+        margin-bottom: 0.6em;
+    }
+
+    li {
+        margin-bottom: 0.4em;
+        margin-top: 0.4em;
+    }
+
+}
+

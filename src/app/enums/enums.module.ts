@@ -7,6 +7,9 @@ import { IonicModule } from '@ionic/angular';
 
 import { EnumsPage } from './enums.page';
 
+import { MarkdownModule } from 'ngx-markdown';
+import { HttpClientModule } from '@angular/common/http';
+
 const routes: Routes = [
   {
     path: '',
@@ -19,7 +22,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    HttpClientModule,
+    MarkdownModule.forRoot({ loader: HttpClientModule }),
   ],
   declarations: [EnumsPage]
 })

@@ -6,7 +6,16 @@
 
 <ion-content padding>
 
-<markdown [src]="'/assets/markdown.md'" ngPreserveWhitespaces>
-</markdown>
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-title>DEVELOPER NOTES</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
 
+      <markdown [src]="'/assets/markdown.md'" ngPreserveWhitespaces>
+      </markdown>
+    
+    </ion-card-content>
+  </ion-card>
+  
 </ion-content>

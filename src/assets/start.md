@@ -1,25 +1,44 @@
 
 
 
-# What is This?
+# IONIC 4 UI Patterns
 
-## IONIC 4 UI Patterns
+This project is a collection of basic UI patterns, intended to test & establish best practices.
 
-This project is a collection of basic UI patterns, intended to focus on the following;
+## Database Create, Retrieve, Update and Delete ( CRUD ) UI Patterns
 
-+ Use of a single object (DTO) for transporting the entered data to the API.
-+ Full form data validation, with error messages and error styling.
-+ Effective data-binding from the object properties, to form fields
+In all scenarios, we want;
+
++ Use of a single object (DTO) for transporting the data and from to the API.
++ Direct data-binding from the object properties, to form fields, using `[(ngModel)]`.
+    + Correct matching of datatypes to fields. 
+    + string, number, date, and boolean
 + No errors on entry into the form, due to null fields.
-+ Re-initialize the form on each entry so that prior data or validation state is reset.
++ Properly initialize the form as the user enters, leaves, and returns
+    + so that data is correctly initialized
+    + and validation state is reset.
+
+And the option to support; 
+
++ Full form data validation, with error messages and error styling.
 + Handling and binding of ENUM field data.
 
-CREATE new data item, for insertion in a back-end system
+## CREATE new data item, for insertion in a back-end system
 
-UPDATE an existing data item, in a back-end system
+Here we specifically want a pattern 
 
-+ Binding to a custom object (CREATE).
-+ Binding to and from a custom object (UPDATE).
-+ Binding to and from a custom object, with an enum field (UPDATE).
-+ Binding to and from a custom object, with an enum field, and form validation (UPDATE).
+**PATTERN**: [Create new data item](/tabs/create)
 
+## UPDATE an existing data item, in a back-end system
+
+**PATTERN**: [Update an existing data item](/tabs/update)
+
+**PATTERN**: [Update an existing data item, with an enum field](/tabs/enums)
+
+**PATTERN**: [Update an existing data item, with form validation](/tabs/validate)
+
+# Additional Work
+
+**PATTERN**: [Use of Markdown in IONIC pages](/tabs/markdown)
+
++ Use of Markdown in IONIC pages, for supporting on-screen documentation

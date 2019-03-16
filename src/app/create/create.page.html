@@ -39,29 +39,15 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-card text center>
+    <ion-card class="welcome-card">
       <ion-card-header>
-        Notes
+        <ion-card-title>DEVELOPER NOTES</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-    
-          <markdown ngPreserveWhitespaces>
-              # Markdown
-            </markdown>
 
-        <p>Pattern;</p>
-        <ul>
-          <li>Uses a simple class to store page data. Typically this would be transported to an API for CRUD operations.</li>
-          <li>Object fields are directly bound to [(ngModel)]</li>
-          <li>NO data validation</li>
-        </ul>
-        <p>Notes;</p>
-        <ul>
-          <li>Use the browser's dev tools to see the object content on submit.</li>
-          <li>It does not appear to matter what kind data is entered, in the object it all appears as strings.</li>
-          <li>This means the object itself provides no type checking, and this must be done at e.g. the Mongoose layer.</li>
-        </ul>
-        
+        <markdown [src]="'/assets/create.md'" ngPreserveWhitespaces>
+        </markdown>
+      
       </ion-card-content>
     </ion-card>
 

@@ -1,6 +1,6 @@
 
 // Integer enum,
-// This would be database-stored e.g. in a MongoDB document. 
+// This would be database-stored e.g. in a MongoDB document.
 export enum TestEnum {
     Option_1 = 1,
     Option_2 = 2,
@@ -12,10 +12,12 @@ export enum TestEnum {
 // Our Data Transfer Object (DTO)
 // for working with, and transporting data to-and-from the REST API.
 export class TestEnumData {
-    myEnum: TestEnum; // = TestEnum.Option_1;
+    en: TestEnum; // = TestEnum.Option_1;
     num: number;
     name: string;
-    date: Date;
+    // IONIC uses strings for dates
+    // https://ionicframework.com/docs/api/datetime#datetime-data
+    date: string; // Date
     bool: boolean;
 }
 
@@ -26,7 +28,7 @@ export namespace TestEnum {
 
     // Retrieves the string name of a specific enum value
     // We convert underscores to spaces for display
-    export function getMyEnumName(e: TestEnum): string {
+    export function getName(e: TestEnum): string {
         return TestEnum[e].toString().replace('_', ' ');
     }
 

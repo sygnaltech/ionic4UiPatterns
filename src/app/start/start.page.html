@@ -1,26 +1,24 @@
 <ion-header>
     <ion-toolbar>
       <ion-title>
-        Tab One
+        Start
       </ion-title>
     </ion-toolbar>
   </ion-header>
   
-  <ion-content>
+  <ion-content padding>
 
+    <ion-card class="welcome-card">
+      <ion-card-header>
+        <ion-card-title>INTRODUCTION</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
 
-      <ion-card class="welcome-card">
-        <ion-card-header>
-          <ion-card-subtitle>What is this?</ion-card-subtitle>
-          <ion-card-title>IONIC 4 UI Patterns</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
+          <markdown [src]="'/assets/start.md'" ngPreserveWhitespaces>
+          </markdown>
+      
+      </ion-card-content>
+    </ion-card>
 
-            <markdown [src]="'/assets/start.md'" ngPreserveWhitespaces>
-            </markdown>
-        
-
-        </ion-card-content>
-      </ion-card>
-  </ion-content>
+</ion-content>
   
