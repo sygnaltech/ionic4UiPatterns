@@ -10,6 +10,7 @@
 plus;*
 
 + Ability to support `enum` fields in our bound object.
+Either untyped enums, or numeric enums. 
 
 + Ability to list possible enum values from the user to choose from.
 
@@ -19,7 +20,9 @@ plus;*
 [UPDATE pattern](/tabs/update)
 for additional implementation notes.*
 
-+ For our purposes, we are using an enum which contains numeric values. It should be possible to handle other enum configurations as well.
++ For our purposes, we are working with enum which contains numeric values. It should be possible to handle other enum configurations as well.
+
++ String-based enums were found to be problematic.
 
 ### Data-Binding our object's enum property
 
@@ -43,10 +46,41 @@ set getTestEnum(u: string) {
 
 ### Creating our Enumerated Options List
 
+Retrieving and creating our list of `<ion-select-option>` elements appears to require some helper functions- particularly for accessing the enum type's keys, and transposing those to names. 
+
+To accomplish this, we add some functionality directly into our class definition file, in the form of exported functions.
+
+The namespace `TestEnum` matches the name of our `enum`, so these functions behave much like *extension functions* in C#.
+
+```
+export namespace TestEnum {
+
+    // Retrieves the string name of a specific enum value
+    // We convert underscores to spaces for display
+    export function getName(e: TestEnum): string {
+        return TestEnum[e].toString().replace('_', ' ');
+    }
+
+    // Retrieves the set of all Keys
+    export function keys() {
+        return Object.keys(TestEnum);
+    }
+
+}
+```
+
+
+
+
+
 + Creating the list of enumeration options has challenges as well.  
 
 ```
-<ion-select-option *ngFor="let t of testEnum.keys();" value="{{ t }}">{{ testEnum.getName(t) }}</ion-select-option>
+<ion-select-option 
+    *ngFor="let t of testEnum.keys();" 
+    value="{{ t }}">
+    {{ testEnum.getName(t) }}
+</ion-select-option>
 ```
 
 

@@ -23,6 +23,18 @@
               </ion-select>
             </ion-item>
             <ion-item>
+              <ion-label floating>Enum (Integer)</ion-label>
+              <ion-select [(ngModel)]="getTestEnumInteger"> 
+                <ion-select-option *ngFor="let t of testEnumInteger.keys();" value="{{ t }}">{{ testEnumInteger.getName(t) }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <!-- <ion-item>
+              <ion-label floating>Enum (String)</ion-label>
+              <ion-select [(ngModel)]="getTestEnumString"> 
+                <ion-select-option *ngFor="let t of testEnumString.keys();" value="{{ testEnumString[t] }}">{{ testEnumString.getName(t) }}</ion-select-option>
+              </ion-select>
+            </ion-item> -->
+            <ion-item>
               <ion-label floating>Numeric</ion-label>
               <ion-input type="number" [(ngModel)]="data.num"></ion-input>
             </ion-item>
