@@ -8,12 +8,16 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+// import { EnumKeysPipe } from './enum-keys.pipe';
 
 // import { MarkdownModule } from 'ngx-markdown';
 //import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+//    EnumKeysPipe
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -27,6 +31,9 @@ import { AppRoutingModule } from './app-routing.module';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+//    EnumKeysPipe
+  ]
 })
 export class AppModule {}

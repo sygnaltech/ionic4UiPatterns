@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TestData } from 'models/test.dto';
-// import { MarkdownModule } from 'ngx-markdown';
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.page.html',
@@ -9,7 +9,7 @@ import { TestData } from 'models/test.dto';
 })
 export class CreatePage implements OnInit {
 
-  data: TestData; // = new TestData();
+  data: TestData;
 
   constructor(
     private router: Router,
