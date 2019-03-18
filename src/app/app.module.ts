@@ -8,7 +8,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-// import { EnumKeysPipe } from './enum-keys.pipe';
+
+//import { EnumKeysPipe } from './enum-keys.pipe';
 
 // import { MarkdownModule } from 'ngx-markdown';
 //import { HttpClientModule } from '@angular/common/http';
@@ -16,15 +17,12 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-//    EnumKeysPipe
   ],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-//    HttpClientModule,
-//    MarkdownModule.forRoot(), // { loader: HttpClient }),
   ],
   providers: [
     StatusBar,
@@ -33,7 +31,6 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   bootstrap: [AppComponent],
   exports: [
-//    EnumKeysPipe
   ]
 })
 export class AppModule {}

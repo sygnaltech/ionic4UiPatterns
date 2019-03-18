@@ -1,16 +1,5 @@
-import { NgModule } from '@angular/core';
+
 import { Pipe, PipeTransform } from '@angular/core';
-
-// @Pipe({
-//   name: 'enumKeys'
-// })
-// export class EnumKeysPipe implements PipeTransform {
-
-//   transform(value: any, args?: any): any {
-//     return null;
-//   }
-
-// }
 
 @Pipe({ name: 'keys' })
 export class EnumKeysPipe implements PipeTransform {
@@ -31,9 +20,5 @@ export class EnumKeysPipe implements PipeTransform {
   }
 }
 
-@NgModule({
-  declarations: [ EnumKeysPipe ],
-  exports: [ EnumKeysPipe ]
-})
-export class SharedModule {}
+
 
