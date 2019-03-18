@@ -3,7 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
+import { CustomPipesModule } from '../../shared/custompipesmodule';
+
 import { IonicModule } from '@ionic/angular';
+
+import { MarkdownModule } from 'ngx-markdown';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ValidatePage } from './validate.page';
 
@@ -19,7 +24,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    HttpClientModule,
+    MarkdownModule.forRoot({ loader: HttpClientModule }),
+    CustomPipesModule,
   ],
   declarations: [ValidatePage]
 })

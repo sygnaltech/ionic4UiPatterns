@@ -1,9 +1,74 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>validate</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding>
-
-</ion-content>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaulthref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>UPDATE Data Item, with Forms Validation</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+  
+      <ion-card text center>
+        <ion-card-header>
+          My Object Data ( TestData )
+        </ion-card-header>
+        <ion-card-content>
+  
+          <ion-list>
+            <ion-item>
+              <ion-label floating>Enum</ion-label>
+              <ion-select [(ngModel)]="data.getTestEnum"> 
+                <ion-select-option *ngFor="let entry of testEnum | keys" value="{{ entry.key }}">{{ entry.name }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Enum (Integer)</ion-label>
+              <ion-select [(ngModel)]="data.getTestEnumInt"> 
+                <ion-select-option *ngFor="let entry of testEnumInt | keys" value="{{ entry.key }}">{{ entry.name }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <!-- <ion-item>
+              <ion-label floating>Enum (String)</ion-label>
+              <ion-select [(ngModel)]="getTestEnumString"> 
+                <ion-select-option *ngFor="let t of testEnumString.keys();" value="{{ testEnumString[t] }}">{{ testEnumString.getName(t) }}</ion-select-option>
+              </ion-select>
+            </ion-item> -->
+            <ion-item>
+              <ion-label floating>Numeric</ion-label>
+              <ion-input type="number" [(ngModel)]="data.num"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>String</ion-label>
+              <ion-input type="text" [(ngModel)]="data.name"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Date (UTC)</ion-label>
+              <ion-datetime [(ngModel)]="data.date"></ion-datetime>
+            </ion-item>          
+            <ion-item>
+              <ion-label floating>Boolean</ion-label>
+              <ion-toggle [(ngModel)]="data.bool"></ion-toggle>
+            </ion-item>
+          </ion-list>
+      
+          <ion-button fill="outline" (click)="updateItem()">Update Item</ion-button>
+          <ion-button fill="outline" (click)="showItem()">Show Item</ion-button>
+  
+        </ion-card-content>
+      </ion-card>
+  
+      <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>DEVELOPER NOTES</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+    
+            <markdown [src]="'/assets/validate.md'" ngPreserveWhitespaces>
+            </markdown>
+          
+          </ion-card-content>
+        </ion-card>
+      
+  </ion-content>
+  

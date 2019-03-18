@@ -1,7 +1,7 @@
 
 
 
-# Databinding, Templates, and ENUMS
+# UPDATE Data Item, with DATA VALIDATION
 
 Here we are exploring **enums** as they relate to **templates** and **2-way databinding**,
 in isolation from our other CRUD pattern requirements.
@@ -10,9 +10,11 @@ in isolation from our other CRUD pattern requirements.
 
 ## Pattern Requirements
 
-+ Uses a simple `class` to store page data. Typically this would be used with a REST API for CRUD operations.
+*All of the pattern requirements
+[UPDATE pattern](/tabs/update)
+plus;*
 
-+ In addition to basic data types, support `enums`, specifically;
++ Ability to support `enum` fields in our bound object, specifically these enum types;
 
     + Implicitly-valued enums.
 When enums are not assigned a value directly, TypeScript assigns integer values starting with `0`.
@@ -33,8 +35,12 @@ Currently we've avoided string-valued enums.
 
 + Ability to extract the list of keys and values from the enum, and data-bind it to an `ion-select` for user selection.
 
+
 ## Implementation Notes
 
+*See the 
+[UPDATE pattern](/tabs/update)
+for additional implementation notes.*
 
 + For our purposes, we are working with enum which contains numeric values. It should be possible to handle other enum configurations as well.
 
@@ -93,6 +99,7 @@ Apparently, an `@NgModule()` is essential in order to "own" our pipe, and to mak
     </ion-select-option>
 </ion-select>
 ```
+
 
 ## Key things Learned
 
