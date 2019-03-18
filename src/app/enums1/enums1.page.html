@@ -17,9 +17,15 @@
   
           <ion-list>
             <ion-item>
-              <ion-label floating>FooEnum</ion-label>
-              <ion-select [(ngModel)]="getFooEnum"> 
-                <ion-select-option *ngFor="let entry of fooEnum | keys" value="{{ entry.key }}">{{ entry.name }}</ion-select-option>
+              <ion-label floating>TestEnum</ion-label>
+              <ion-select [(ngModel)]="dataVal.getTestEnum"> 
+                <ion-select-option *ngFor="let entry of testEnum | keys" value="{{ entry.key }}">{{ entry.name }}</ion-select-option>
+              </ion-select>
+            </ion-item>            
+            <ion-item>
+              <ion-label floating>TestEnumInt</ion-label>
+              <ion-select [(ngModel)]="dataVal.getTestEnumInt"> 
+                <ion-select-option *ngFor="let entry of testEnumInt | keys" value="{{ entry.key }}">{{ entry.name }}</ion-select-option>
               </ion-select>
             </ion-item>            
           </ion-list>

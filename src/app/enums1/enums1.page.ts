@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { TestEnumData, TestEnum, TestEnumInteger } from 'models/testEnum.dto';
+import { TestEnumData, TestEnum, TestEnumInteger } from 'models/testEnum.dto';
 // import { PipeTransform, Pipe } from '@angular/core';
 // import { EnumKeysPipe } from '../enum-keys.pipe';
 //import { EnumKeysPipe } from '../enum-keys.pipe';
@@ -38,18 +38,23 @@ export enum FooEnum {
 })
 export class Enums1Page implements OnInit {
 
-  public dataVal; // = FooEnum.Option_4;
+  public dataVal; //: TestEnumData;
 
-  get getFooEnum(): string {
-    return this.dataVal.toString();
-  }
-  set getFooEnum(u: string) {
-    this.dataVal = +u;
-  }
+//  TestEnumData
+
+  // get getFooEnum(): string {
+  //   return this.dataVal.toString();
+  // }
+  // set getFooEnum(u: string) {
+  //   this.dataVal = +u;
+  // }
+
+  public testEnum = TestEnum;
+  public testEnumInt = TestEnumInteger;
 
   // for access to the Enums, within this context,
   // needed for template access?
-  get fooEnum() { return FooEnum; }
+//  get fooEnum() { return FooEnum; }
 
   constructor(
     private router: Router,
@@ -81,8 +86,10 @@ export class Enums1Page implements OnInit {
   initializeData() {
 
     // Set any initial values
-    this.dataVal = FooEnum.Option_4;
-
+//    this.dataVal = FooEnum.Option_4;
+this.dataVal = new TestEnumData();
+this.dataVal.en = TestEnum.Option_4;
+this.dataVal.enInt = TestEnumInteger.Option_3;
   }
 
 }

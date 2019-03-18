@@ -37,6 +37,21 @@ export class TestEnumData {
     // https://ionicframework.com/docs/api/datetime#datetime-data
     date: string; // Date
     bool: boolean;
+
+    get getTestEnum(): string {
+        return this.en.toString();
+    }
+    set getTestEnum(u: string) {
+        this.en = +u;
+    }
+
+    get getTestEnumInt(): string {
+        return this.enInt.toString();
+    }
+    set getTestEnumInt(u: string) {
+        this.enInt = +u;
+    }
+
 }
 
 // Functions here behave as though they are extensions of the Enum,
