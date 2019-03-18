@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import { CustomPipesModule } from '../../shared/custompipesmodule';
 
-import { EnumsPage } from './enums.page';
+import { IonicModule } from '@ionic/angular';
 
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule } from '@angular/common/http';
+
+import { EnumsPage } from './enums.page';
 
 const routes: Routes = [
   {
@@ -25,6 +27,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     HttpClientModule,
     MarkdownModule.forRoot({ loader: HttpClientModule }),
+    CustomPipesModule,
   ],
   declarations: [EnumsPage]
 })

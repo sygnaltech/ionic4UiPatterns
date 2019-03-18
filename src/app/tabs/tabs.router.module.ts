@@ -44,15 +44,6 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'enums1',
-        children: [
-          {
-            path: '',
-            loadChildren: '../enums1/enums1.module#Enums1PageModule'
-          }
-        ]
-      },
-      {
         path: 'enums',
         children: [
           {

@@ -18,14 +18,14 @@
           <ion-list>
             <ion-item>
               <ion-label floating>Enum</ion-label>
-              <ion-select [(ngModel)]="getTestEnum"> 
-                <ion-select-option *ngFor="let t of testEnum.keys();" value="{{ t }}">{{ testEnum.getName(t) }}</ion-select-option>
+              <ion-select [(ngModel)]="data.getTestEnum"> 
+                <ion-select-option *ngFor="let entry of testEnum | keys" value="{{ entry.key }}">{{ entry.name }}</ion-select-option>
               </ion-select>
             </ion-item>
             <ion-item>
               <ion-label floating>Enum (Integer)</ion-label>
-              <ion-select [(ngModel)]="getTestEnumInteger"> 
-                <ion-select-option *ngFor="let t of testEnumInteger.keys();" value="{{ t }}">{{ testEnumInteger.getName(t) }}</ion-select-option>
+              <ion-select [(ngModel)]="data.getTestEnumInt"> 
+                <ion-select-option *ngFor="let entry of testEnumInt | keys" value="{{ entry.key }}">{{ entry.name }}</ion-select-option>
               </ion-select>
             </ion-item>
             <!-- <ion-item>

@@ -15,27 +15,29 @@ export class EnumsPage implements OnInit {
   data: TestEnumData;
 
   // for access to the Enums, within this context,
-  // needed for template access?
-  get testEnum() { return TestEnum; }
-  get testEnumInteger() { return TestEnumInteger; }
+  // needed for template access.
+  public testEnum = TestEnum;
+  public testEnumInt = TestEnumInteger;
+  // get testEnum() { return TestEnum; }
+  // get testEnumInteger() { return TestEnumInteger; }
 //  get testEnumString() { return TestEnumString; }
 
   // HACK: getters/setters which
   // 1. give me access to the object property
   // 2. convert it to/from a string, for the ion-select
-  get getTestEnum(): string {
-    return this.data.en.toString();
-  }
-  set getTestEnum(u: string) {
-    this.data.en = +u;
-  }
+  // get getTestEnum(): string {
+  //   return this.data.en.toString();
+  // }
+  // set getTestEnum(u: string) {
+  //   this.data.en = +u;
+  // }
 
-  get getTestEnumInteger(): string {
-    return this.data.enInt.toString();
-  }
-  set getTestEnumInteger(u: string) {
-    this.data.enInt = +u;
-  }
+  // get getTestEnumInteger(): string {
+  //   return this.data.enInt.toString();
+  // }
+  // set getTestEnumInteger(u: string) {
+  //   this.data.enInt = +u;
+  // }
 
   // get getTestEnumString(): string {
   //   console.log(this.data.enStr.toString());
@@ -83,8 +85,8 @@ export class EnumsPage implements OnInit {
     this.data = new TestEnumData();
 
     // Set any initial values
-    this.data.en = TestEnum.Option_1;
-    this.data.enInt = TestEnumInteger.Option_2;
+    this.data.en = TestEnum.Option_3;
+    this.data.enInt = TestEnumInteger.Option_4;
 //    this.data.enStr = TestEnumString.Option_3;
     this.data.name = 'Test Name';
     this.data.num = 12;
