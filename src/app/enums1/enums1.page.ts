@@ -1,35 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TestEnumData, TestEnum, TestEnumInteger } from 'models/testEnum.dto';
-// import { PipeTransform, Pipe } from '@angular/core';
-// import { EnumKeysPipe } from '../enum-keys.pipe';
-//import { EnumKeysPipe } from '../enum-keys.pipe';
-
-export enum FooEnum {
-  Option_1 = 1,
-  Option_2 = 2,
-  Option_3 = 3,
-  Option_4 = 4,
-  Option_5 = 5,
-}
-
-// export namespace FooEnum {
-
-//   // Retrieves the string name of a specific enum value
-//   // We convert underscores to spaces for display
-//   export function getName(e: FooEnum): string {
-//       return FooEnum[e].toString().replace('_', ' ');
-//   }
-
-//   // Retrieves the set of all Keys
-//   export function keys() {
-//       return Object.keys(FooEnum);
-//   }
-
-// }
-
-
-
 
 @Component({
   selector: 'app-enums1',
@@ -38,23 +9,13 @@ export enum FooEnum {
 })
 export class Enums1Page implements OnInit {
 
-  public dataVal; //: TestEnumData;
-
-//  TestEnumData
-
-  // get getFooEnum(): string {
-  //   return this.dataVal.toString();
-  // }
-  // set getFooEnum(u: string) {
-  //   this.dataVal = +u;
-  // }
-
-  public testEnum = TestEnum;
-  public testEnumInt = TestEnumInteger;
+  // Our data object
+  public data;
 
   // for access to the Enums, within this context,
-  // needed for template access?
-//  get fooEnum() { return FooEnum; }
+  // needed for template access.
+  public testEnum = TestEnum;
+  public testEnumInt = TestEnumInteger;
 
   constructor(
     private router: Router,
@@ -66,13 +27,13 @@ export class Enums1Page implements OnInit {
   }
 
   async showItem() {
-    console.log('Data: ', this.dataVal);
+    console.log('Data: ', this.data);
   }
 
   async updateItem() {
 
     // Save data
-    console.log('Data saved: ', this.dataVal);
+    console.log('Data saved: ', this.data);
 
     // await Toast.show({
     //   text: 'User added.'
@@ -85,11 +46,11 @@ export class Enums1Page implements OnInit {
 
   initializeData() {
 
-    // Set any initial values
-//    this.dataVal = FooEnum.Option_4;
-this.dataVal = new TestEnumData();
-this.dataVal.en = TestEnum.Option_4;
-this.dataVal.enInt = TestEnumInteger.Option_3;
+    // Initialize our data object
+    this.data = new TestEnumData();
+    this.data.en = TestEnum.Option_4;
+    this.data.enInt = TestEnumInteger.Option_3;
+
   }
 
 }

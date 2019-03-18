@@ -3,41 +3,50 @@
 
 # Databinding, Templates, and ENUMS
 
-Here we are exploring **templates**, **2-way databinding** and **enums**,
+Here we are exploring **enums** as they relate to **templates** and **2-way databinding**,
 in isolation from our other CRUD pattern requirements.
 
 [Learn about TypeScript enums](https://www.typescriptlang.org/docs/handbook/enums.html)
 
 ## Pattern Requirements
 
-+ Using an `enum`, either;
++ Uses a simple `class` to store page data. Typically this would be used with a REST API for CRUD operations.
 
-    + un-valued enums.
++ In addition to basic data types, support `enums`, specifically;
+
+    + Implicitly-valued enums.
 When enums are not assigned a value directly, TypeScript assigns integer values starting with `0`.
 
-    + numeric enums.
+    + Explicitly-valued numeric enums.
 Enums in which we have explicitly assigned a numeric value to each.
 
-    + ~~string enums~~.
+    + ~~Explicitly-valued string enums~~.
 Currently we've avoided string-valued enums.
+
++ Simple, convenient 2-way data binding to elements, in particular `ion-select`, e.g.;
+
+```angular
+<ion-select type="text" [(ngModel)]="data.myEnum">
+    ...
+</ion-select>
+```
 
 + Ability to extract the list of keys and values from the enum, and data-bind it to an `ion-select` for user selection.
 
-+ 2-way databinding of the selected `enum` value.
-
 ## Implementation Notes
+
 
 + For our purposes, we are working with enum which contains numeric values. It should be possible to handle other enum configurations as well.
 
-+ String-based enums were found to be problematic.
++ String-based enums were found to be problematic.  Since this isn't a common use case, we'll revisit this later.
 
 ### Data-Binding our object's enum property
 
-+ It does not appear possible to bind `[(ngModel)]` to the object property directly, although it's unclear why this is.  Instead we provide a get/set method in the page class, which provides access to our object property, and we bind to that;
++ It does not appear possible to bind `ion-select`s `[(ngModel)]` to an enum directly. Instead we provide a get/set method in the object class, which provides `string` conversion for our enum value, and we bind to that;
+
+In our data `TestEnumData` class;
 
 ```
-data: TestEnumData; 
-
 get getTestEnum(): string {
     return this.data.en.toString();
 }
@@ -46,8 +55,10 @@ set getTestEnum(u: string) {
 }
 ```
 
+In our template, we bind to the property `getTestEnum`, rather than the field `en`;
+
 ```
-<ion-select [(ngModel)]="getTestEnum"> 
+<ion-select [(ngModel)]="data.getTestEnum"> 
 </ion-select>
 ```
 
@@ -71,45 +82,26 @@ Note that the names are somewhat confusing;
 + The inclusion of the `@NgModule()` and exported `SharedModule` class.  
 Apparently, an `@NgModule()` is essential in order to "own" our pipe, and to make it importable into other modules and components.
 
-The namespace `TestEnum` matches the name of our `enum`, so these functions behave much like *extension functions* in C#.
++ With the pipe, creating the list of enumeration options is tidy;  
 
 ```
-export namespace TestEnum {
-
-    // Retrieves the string name of a specific enum value
-    // We convert underscores to spaces for display
-    export function getName(e: TestEnum): string {
-        return TestEnum[e].toString().replace('_', ' ');
-    }
-
-    // Retrieves the set of all Keys
-    export function keys() {
-        return Object.keys(TestEnum);
-    }
-
-}
+<ion-select [(ngModel)]="data.getTestEnum"> 
+  <ion-select-option 
+    *ngFor="let entry of testEnum | keys" 
+    value="{{ entry.key }}">
+    {{ entry.name }}
+    </ion-select-option>
+</ion-select>
 ```
-
-
-
-
-
-+ Creating the list of enumeration options has challenges as well.  
-
-```
-<ion-select-option 
-    *ngFor="let t of testEnum.keys();" 
-    value="{{ t }}">
-    {{ testEnum.getName(t) }}
-</ion-select-option>
-```
-
-
 
 ## Key things Learned
 
 + Use the browser's dev tools to see the object content on submit.
 
++ Pipes are very useful for maintaining clean code, and adding power to templates.
+However they can probably only be used in read-only situations, not 2-way data binding.
+
++ Pipes MUST be owned by an ngModule, and exported there.  You cannot create a pipe by itself and use it.
 
 ## Understanding `@NgModule()`
 

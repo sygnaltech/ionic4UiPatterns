@@ -1,5 +1,5 @@
 
-// Integer enum,
+// Integer enum, with implicit values
 // This would be database-stored e.g. in a MongoDB document.
 export enum TestEnum {
     Option_1,
@@ -9,6 +9,8 @@ export enum TestEnum {
     Option_5,
 }
 
+// Integer enum, with explicit values
+// This would be database-stored e.g. in a MongoDB document.
 export enum TestEnumInteger {
     Option_1 = 1,
     Option_2 = 2,
@@ -28,16 +30,21 @@ export enum TestEnumInteger {
 // Our Data Transfer Object (DTO)
 // for working with, and transporting data to-and-from the REST API.
 export class TestEnumData {
+
     en: TestEnum;
     enInt: TestEnumInteger;
 //    enStr: TestEnumString;
     num: number;
     name: string;
+
     // IONIC uses strings for dates
     // https://ionicframework.com/docs/api/datetime#datetime-data
     date: string; // Date
+
     bool: boolean;
 
+    // Provides string transformation for the enums,
+    // which is needed for ion-select data-binding
     get getTestEnum(): string {
         return this.en.toString();
     }
@@ -45,6 +52,8 @@ export class TestEnumData {
         this.en = +u;
     }
 
+    // Provides string transformation for the enums,
+    // which is needed for ion-select data-binding
     get getTestEnumInt(): string {
         return this.enInt.toString();
     }

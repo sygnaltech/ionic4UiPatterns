@@ -16,7 +16,7 @@
 
 + No *data validation*, however basic *data type* control by choosing which IONIC form control to use.
 
-+ Simple, convenient binding to fields, e.g.;
++ Simple, convenient 2-way data binding to fields, e.g.;
 
 ```angular
 <ion-input type="text" [(ngModel)]="data.name"></ion-input>
