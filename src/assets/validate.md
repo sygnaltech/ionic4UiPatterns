@@ -51,7 +51,9 @@ which appears to provide
 [much richer capabilities](https://blog.angular-university.io/introduction-to-angular-2-forms-template-driven-vs-model-driven/)
 for advanced model/view interaction.
 
-**NOTE:** Technically, Reactive forms appears to be incompatible with the `[(ngModel)]` data binding approach, in favor of a different approach, and we may need to change that approach for compatibility later.
+**NOTE:** Technically, Reactive forms 
+[appears to be incompatible](https://angular.io/api/forms/FormControlName#use-with-ngmodel)
+with the `[(ngModel)]` data binding approach, in favor of a different approach, and we may need to change that approach for compatibility later.
 Currently it is deprecated but still functioning.
 
 

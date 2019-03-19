@@ -130,8 +130,10 @@ export class ValidatePage implements OnInit {
         Validators.maxLength(15),
         Validators.pattern('[a-zA-Z ]*'),
         ])],
-      dateCtl: [''], // , Validators.required],
-      boolCtl: ['', Validators.requiredTrue], // , Validators.required],
+      dateCtl: [''],
+      boolCtl: ['',
+        Validators.requiredTrue
+        ],
     });
 
     // Reset submit attempt

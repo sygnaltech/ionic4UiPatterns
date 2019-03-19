@@ -18,34 +18,6 @@ export class EnumsPage implements OnInit {
   // needed for template access.
   public testEnum = TestEnum;
   public testEnumInt = TestEnumInteger;
-  // get testEnum() { return TestEnum; }
-  // get testEnumInteger() { return TestEnumInteger; }
-//  get testEnumString() { return TestEnumString; }
-
-  // HACK: getters/setters which
-  // 1. give me access to the object property
-  // 2. convert it to/from a string, for the ion-select
-  // get getTestEnum(): string {
-  //   return this.data.en.toString();
-  // }
-  // set getTestEnum(u: string) {
-  //   this.data.en = +u;
-  // }
-
-  // get getTestEnumInteger(): string {
-  //   return this.data.enInt.toString();
-  // }
-  // set getTestEnumInteger(u: string) {
-  //   this.data.enInt = +u;
-  // }
-
-  // get getTestEnumString(): string {
-  //   console.log(this.data.enStr.toString());
-  //   return 'Option_2'; // this.data.enStr.toString();
-  // }
-  // set getTestEnumString(u: string) {
-  //   this.data.enStr = <TestEnumString>u; // TestEnumString.keys()['Option_5']; // TestEnumString.Option_4; // TestEnumString[u];
-  // }
 
   constructor(
     private router: Router,

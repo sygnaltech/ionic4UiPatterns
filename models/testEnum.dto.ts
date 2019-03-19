@@ -63,50 +63,24 @@ export class TestEnumData {
 
 }
 
+// Below was my original approach for providing ngModel databinding
+// support for enums.  It has been deprecated in favor of the
+// class property approach above.
+
 // Functions here behave as though they are extensions of the Enum,
 // since the namespace matches.
 // These are 'helper functions' to solve specific problems.
-export namespace TestEnum {
-
-    // Retrieves the string name of a specific enum value
-    // We convert underscores to spaces for display
-    export function getName(e: TestEnum): string {
-        return TestEnum[e].toString().replace('_', ' ');
-    }
-
-    // Retrieves the set of all Keys
-    export function keys() {
-        return Object.keys(TestEnum);
-    }
-
-}
-
-export namespace TestEnumInteger {
-
-    // Retrieves the string name of a specific enum value
-    // We convert underscores to spaces for display
-    export function getName(e: TestEnumInteger): string {
-        return TestEnumInteger[e].toString().replace('_', ' ');
-    }
-
-    // Retrieves the set of all Keys
-    export function keys() {
-        return Object.keys(TestEnumInteger);
-    }
-
-}
-
-// export namespace TestEnumString {
+// export namespace TestEnum {
 
 //     // Retrieves the string name of a specific enum value
 //     // We convert underscores to spaces for display
-//     export function getName(e: TestEnumString): string {
-//         return TestEnumString[e].toString().replace('_', ' ');
+//     export function getName(e: TestEnum): string {
+//         return TestEnum[e].toString().replace('_', ' ');
 //     }
 
 //     // Retrieves the set of all Keys
 //     export function keys() {
-//         return Object.keys(TestEnumString);
+//         return Object.keys(TestEnum);
 //     }
 
 // }

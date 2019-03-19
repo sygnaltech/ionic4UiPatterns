@@ -46,23 +46,10 @@ export class CreatePage implements OnInit {
 
   }
 
-  // ionViewWillEnter() {
-
-  //   // Occurs on every re-entry into this page,
-  //   // e.g. user navigates away and then returns to the page
-
-  //   console.log('ionViewWillEnter (enter): ', this.data);
-
-  //   // In our scenario, we want the data to clear again.
-  //   this.initializeData();
-
-  //   console.log('ionViewWillEnter (leave): ', this.data);
-
-  // }
-
+  // Occurs every navigation away from this page.
+  // We use this to reset our data.
   ionViewWillLeave() {
 
-    // Occurs every navigation away from this page.
 
     console.log('ionViewWillLeave (enter): ', this.data);
 
