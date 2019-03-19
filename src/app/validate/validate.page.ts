@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+// Custom data objects
 import { TestEnumData, TestEnum, TestEnumInteger } from 'models/testEnum.dto';
+
+// Form validation
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-validate',
@@ -18,38 +23,21 @@ export class ValidatePage implements OnInit {
   // needed for template access.
   public testEnum = TestEnum;
   public testEnumInt = TestEnumInteger;
-  // get testEnum() { return TestEnum; }
-  // get testEnumInteger() { return TestEnumInteger; }
-//  get testEnumString() { return TestEnumString; }
 
-  // HACK: getters/setters which
-  // 1. give me access to the object property
-  // 2. convert it to/from a string, for the ion-select
-  // get getTestEnum(): string {
-  //   return this.data.en.toString();
-  // }
-  // set getTestEnum(u: string) {
-  //   this.data.en = +u;
-  // }
+  public formBuilder: FormBuilder;
 
-  // get getTestEnumInteger(): string {
-  //   return this.data.enInt.toString();
-  // }
-  // set getTestEnumInteger(u: string) {
-  //   this.data.enInt = +u;
-  // }
+  public mainForm: FormGroup;
 
-  // get getTestEnumString(): string {
-  //   console.log(this.data.enStr.toString());
-  //   return 'Option_2'; // this.data.enStr.toString();
-  // }
-  // set getTestEnumString(u: string) {
-  //   this.data.enStr = <TestEnumString>u; // TestEnumString.keys()['Option_5']; // TestEnumString.Option_4; // TestEnumString[u];
-  // }
+  // Indicates whether a submit has been attempted
+  public submitAttempt: boolean;
 
   constructor(
     private router: Router,
+    public formBuilder1: FormBuilder,
   ) {
+
+    // This feels weird. Necessary?
+    this.formBuilder = formBuilder1;
 
     // Initialize our data object
     // This occurs on the very first page setup only,
@@ -67,6 +55,20 @@ export class ValidatePage implements OnInit {
 
   async updateItem() {
 
+    console.log('Validating form...');
+
+    // Register that a submit has been attempted
+    // and therefore we should display any validation errors
+    this.submitAttempt = true;
+
+    // If data is not valid, abort
+    if (!this.mainForm.valid) {
+      console.log('... data is NOT VALID');
+      return;
+    }
+
+    console.log('... data VALID');
+
     // Save data
     console.log('Data saved: ', this.data);
 
@@ -76,6 +78,32 @@ export class ValidatePage implements OnInit {
 
     // Return to main page
     this.router.navigateByUrl('/');
+
+  }
+
+  reset() {
+
+    console.log('Resetting...');
+
+    location.reload();
+
+  }
+
+  validate() {
+
+    console.log('Validating form...');
+
+    // Register that a submit has been attempted
+    // and therefore we should display any validation errors
+    this.submitAttempt = true;
+
+    // If data is not valid, abort
+    if (!this.mainForm.valid) {
+      console.log('... data is NOT VALID');
+      return;
+    }
+
+    console.log('... data VALID');
 
   }
 
@@ -92,6 +120,19 @@ export class ValidatePage implements OnInit {
     this.data.num = 12;
     this.data.date = new Date().toISOString();
     this.data.bool = true;
+
+    // Initialize the validation rules
+    this.mainForm = this.formBuilder.group({
+      testEnumCtl: ['', Validators.required],
+      testEnumIntCtl: ['', Validators.required],
+      numCtl: ['', Validators.required],
+      nameCtl: ['', Validators.required],
+      dateCtl: [''], // , Validators.required],
+      boolCtl: [''], // , Validators.required],
+    });
+
+    // Reset submit attempt
+    this.submitAttempt = false;
 
   }
 

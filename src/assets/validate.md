@@ -3,6 +3,72 @@
 
 # UPDATE Data Item, with DATA VALIDATION
 
+
+Validation rules we're testing;
+
+Enum
+
++ required
+
+Enum (Integer)
+
++ required
+
+Numeric
+
++ required
+
+String
+
++ required
+
+Date (UTC)
+
+Boolean
+
+
+
+```
+<p *ngIf="!this.mainForm.valid && submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+```
+
+```
+<form [formGroup]="mainForm">
+     ...
+</form>
+``` 
+
+              <ion-select formControlName="testEnumCtl" [(ngModel)]="data.getTestEnum"
+                [class.invalid]="!mainForm.controls.testEnumCtl.valid && (mainForm.controls.testEnumCtl.dirty || submitAttempt)"
+                > 
+
+
+
+
+EVERY item you apply a `formControlName` to must be specified
+
+
+```
+<form [formGroup]="mainForm">
+```
+
+
+Forms v. Reactive Forms 
+
+
+Logic 
+
+submitAttempt
+
+!this.mainForm.valid
+
+mainForm.controls.testEnumCtl.dirty
+
+```
+[class.invalid]="!mainForm.controls.testEnumCtl.valid && (mainForm.controls.testEnumCtl.dirty || submitAttempt)"
+```
+
+
 Here we are exploring **enums** as they relate to **templates** and **2-way databinding**,
 in isolation from our other CRUD pattern requirements.
 
