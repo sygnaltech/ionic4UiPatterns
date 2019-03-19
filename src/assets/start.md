@@ -3,7 +3,9 @@
 
 # IONIC 4 UI Patterns
 
-This project is a collection of basic UI patterns, intended to test & establish best practices.
+This project is a collection of basic UI design patterns, focused on the inteface between the model/controller and the view. 
+
+It is intended to test & establish best practices, around the following design requirements;
 
 ## Database Create, Retrieve, Update and Delete ( CRUD ) UI Patterns
 

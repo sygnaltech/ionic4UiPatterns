@@ -24,9 +24,7 @@
             
             <ion-item>
               <ion-label floating>Enum</ion-label>
-              <ion-select formControlName="testEnumCtl" [(ngModel)]="data.getTestEnum"
-                [class.invalid]="isInvalid('testEnumCtl')"
-                > 
+              <ion-select formControlName="testEnumCtl" [(ngModel)]="data.getTestEnum"> 
                 <ion-select-option *ngFor="let entry of testEnum | keys" value="{{ entry.key }}">{{ entry.name }}</ion-select-option>
               </ion-select>
             </ion-item>
@@ -46,9 +44,7 @@
 
             <ion-item>
               <ion-label floating>Numeric</ion-label>
-              <ion-input formControlName="numCtl" type="number" [(ngModel)]="data.num"
-                [class.invalid]="isInvalid('numCtl')"
-                ></ion-input>
+              <ion-input formControlName="numCtl" type="number" [(ngModel)]="data.num"></ion-input>
             </ion-item>
             <ion-item *ngIf="isInvalid('numCtl')" style="color: var(--ion-color-danger);">
                 <p>Please enter a valid number, between 10 and 20, or leave blank.</p>
@@ -76,9 +72,7 @@
 
             <ion-item>
               <ion-label floating>Date (UTC)</ion-label>
-              <ion-datetime formControlName="dateCtl" [(ngModel)]="data.date"
-                [class.invalid]="isInvalid('dateCtl')"
-                ></ion-datetime>
+              <ion-datetime formControlName="dateCtl" [(ngModel)]="data.date"></ion-datetime>
             </ion-item>
             <ion-item *ngIf="isInvalid('dateCtl')" style="color: var(--ion-color-danger);">
                 <p>Please select a valid option.</p>
@@ -86,9 +80,7 @@
 
             <ion-item>
               <ion-label floating>Boolean</ion-label>
-              <ion-toggle formControlName="boolCtl" [(ngModel)]="data.bool"
-                [class.invalid]="isInvalid('boolCtl')"
-                ></ion-toggle>
+              <ion-toggle formControlName="boolCtl" [(ngModel)]="data.bool"></ion-toggle>
             </ion-item>
             <ion-item *ngIf="isInvalid('boolCtl')" style="color: var(--ion-color-danger);">
                 <p>Must be yes.</p>

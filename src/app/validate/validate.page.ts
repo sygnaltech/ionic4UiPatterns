@@ -24,8 +24,6 @@ export class ValidatePage implements OnInit {
   public testEnum = TestEnum;
   public testEnumInt = TestEnumInteger;
 
-  public formBuilder: FormBuilder;
-
   public mainForm: FormGroup;
 
   // Indicates whether a submit has been attempted
@@ -33,11 +31,8 @@ export class ValidatePage implements OnInit {
 
   constructor(
     private router: Router,
-    public formBuilder1: FormBuilder,
+    public formBuilder: FormBuilder,
   ) {
-
-    // This feels weird. Necessary?
-    this.formBuilder = formBuilder1;
 
     // Initialize our data object
     // This occurs on the very first page setup only,
@@ -154,12 +149,10 @@ export class ValidatePage implements OnInit {
     // validFrom.touched)
     invalid = invalid && (this.mainForm.controls[ctl].dirty || this.submitAttempt);
 
-    // Limit to specific error type
+    // Limit to test for a specific validation error type, if desired
     if (error != null) {
       invalid = invalid && this.mainForm.controls[ctl].errors[error];
     }
-
-// console.log(this.mainForm.controls[ctl].errors);
 
     return invalid;
   }
