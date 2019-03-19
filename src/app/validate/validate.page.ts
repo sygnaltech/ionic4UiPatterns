@@ -125,15 +125,43 @@ export class ValidatePage implements OnInit {
     this.mainForm = this.formBuilder.group({
       testEnumCtl: ['', Validators.required],
       testEnumIntCtl: ['', Validators.required],
-      numCtl: ['', Validators.required],
-      nameCtl: ['', Validators.required],
+      numCtl: ['', Validators.compose([
+        Validators.min(10),
+        Validators.max(20)
+        ])],
+      nameCtl: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(15),
+        Validators.pattern('[a-zA-Z ]*'),
+        ])],
       dateCtl: [''], // , Validators.required],
-      boolCtl: [''], // , Validators.required],
+      boolCtl: ['', Validators.requiredTrue], // , Validators.required],
     });
 
     // Reset submit attempt
     this.submitAttempt = false;
 
+  }
+
+  isInvalid(ctl: string, error?: string): boolean {
+    let invalid = false;
+
+    // Control must be invalid
+    invalid = !this.mainForm.controls[ctl].valid;
+
+    // Control must be touched or have other reason to trigger invalid state
+    // validFrom.touched)
+    invalid = invalid && (this.mainForm.controls[ctl].dirty || this.submitAttempt);
+
+    // Limit to specific error type
+    if (error != null) {
+      invalid = invalid && this.mainForm.controls[ctl].errors[error];
+    }
+
+// console.log(this.mainForm.controls[ctl].errors);
+
+    return invalid;
   }
 
 }

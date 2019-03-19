@@ -8,8 +8,9 @@
   </ion-header>
   
   <ion-content padding>
-        
-      <p *ngIf="!this.mainForm.valid && submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+      
+      <!-- Our form-wide error message -->
+      <p *ngIf="!this.mainForm.valid && submitAttempt" style="color: var(--ion-color-danger);">Please fill out all details accurately.</p>
 
       <form [formGroup]="mainForm">
     
@@ -24,12 +25,12 @@
             <ion-item>
               <ion-label floating>Enum</ion-label>
               <ion-select formControlName="testEnumCtl" [(ngModel)]="data.getTestEnum"
-                [class.invalid]="!mainForm.controls.testEnumCtl.valid && (mainForm.controls.testEnumCtl.dirty || submitAttempt)"
+                [class.invalid]="isInvalid('testEnumCtl')"
                 > 
                 <ion-select-option *ngFor="let entry of testEnum | keys" value="{{ entry.key }}">{{ entry.name }}</ion-select-option>
               </ion-select>
             </ion-item>
-            <ion-item *ngIf="!mainForm.controls.testEnumCtl.valid  && (mainForm.controls.testEnumCtl.dirty || submitAttempt)">
+            <ion-item *ngIf="isInvalid('testEnumCtl')" style="color: var(--ion-color-danger);">
               <p>Please select a valid option.</p>
             </ion-item>
 
@@ -39,48 +40,58 @@
                 <ion-select-option *ngFor="let entry of testEnumInt | keys" value="{{ entry.key }}">{{ entry.name }}</ion-select-option>
               </ion-select>
             </ion-item>
-            <ion-item *ngIf="!mainForm.controls.testEnumIntCtl.valid  && (mainForm.controls.testEnumIntCtl.dirty || submitAttempt)">
+            <ion-item *ngIf="isInvalid('testEnumIntCtl')" style="color: var(--ion-color-danger);">
                 <p>Please select a valid option.</p>
             </ion-item>
 
             <ion-item>
               <ion-label floating>Numeric</ion-label>
               <ion-input formControlName="numCtl" type="number" [(ngModel)]="data.num"
-                [class.invalid]="!mainForm.controls.numCtl.valid && (mainForm.controls.numCtl.dirty || submitAttempt)"
+                [class.invalid]="isInvalid('numCtl')"
                 ></ion-input>
             </ion-item>
-            <ion-item *ngIf="!mainForm.controls.numCtl.valid  && (mainForm.controls.numCtl.dirty || submitAttempt)">
-                <p>Please select a valid option.</p>
+            <ion-item *ngIf="isInvalid('numCtl')" style="color: var(--ion-color-danger);">
+                <p>Please enter a valid number, between 10 and 20, or leave blank.</p>
             </ion-item>
 
             <ion-item>
               <ion-label floating>String</ion-label>
-              <ion-input formControlName="nameCtl" type="text" [(ngModel)]="data.name"
-                [class.invalid]="!mainForm.controls.nameCtl.valid && (mainForm.controls.nameCtl.dirty || submitAttempt)"
-                ></ion-input>
+              <ion-input formControlName="nameCtl" type="text" [(ngModel)]="data.name"></ion-input>
             </ion-item>
-            <ion-item *ngIf="!mainForm.controls.nameCtl.valid  && (mainForm.controls.nameCtl.dirty || submitAttempt)">
-                <p>Please select a valid option.</p>
+            <ion-item *ngIf="isInvalid('nameCtl')" style="color: var(--ion-color-danger);">
+                <p>Names is invalid in one or more ways, see below.</p>
+            </ion-item>
+            <ion-item *ngIf="isInvalid('nameCtl', 'required')" style="color: var(--ion-color-danger);">
+                <p>Name is required.</p>
+            </ion-item>
+            <ion-item *ngIf="isInvalid('nameCtl', 'pattern')" style="color: var(--ion-color-danger);">
+                <p>Names must consist of letters only.</p>
+            </ion-item>
+            <ion-item *ngIf="isInvalid('nameCtl', 'minlength')" style="color: var(--ion-color-danger);">
+                <p>Names must be more than 5 characters in length.</p>
+            </ion-item>
+            <ion-item *ngIf="isInvalid('nameCtl', 'maxlength')" style="color: var(--ion-color-danger);">
+                <p>Names must be less than 15 characters in length.</p>
             </ion-item>
 
             <ion-item>
               <ion-label floating>Date (UTC)</ion-label>
               <ion-datetime formControlName="dateCtl" [(ngModel)]="data.date"
-                [class.invalid]="!mainForm.controls.dateCtl.valid && (mainForm.controls.dateCtl.dirty || submitAttempt)"
+                [class.invalid]="isInvalid('dateCtl')"
                 ></ion-datetime>
             </ion-item>
-            <ion-item *ngIf="!mainForm.controls.dateCtl.valid  && (mainForm.controls.dateCtl.dirty || submitAttempt)">
+            <ion-item *ngIf="isInvalid('dateCtl')" style="color: var(--ion-color-danger);">
                 <p>Please select a valid option.</p>
             </ion-item>
 
             <ion-item>
               <ion-label floating>Boolean</ion-label>
               <ion-toggle formControlName="boolCtl" [(ngModel)]="data.bool"
-                [class.invalid]="!mainForm.controls.boolCtl.valid && (mainForm.controls.boolCtl.dirty || submitAttempt)"
+                [class.invalid]="isInvalid('boolCtl')"
                 ></ion-toggle>
             </ion-item>
-            <ion-item *ngIf="!mainForm.controls.boolCtl.valid  && (mainForm.controls.boolCtl.dirty || submitAttempt)">
-                <p>Please select a valid option.</p>
+            <ion-item *ngIf="isInvalid('boolCtl')" style="color: var(--ion-color-danger);">
+                <p>Must be yes.</p>
             </ion-item>
 
           </ion-list>
