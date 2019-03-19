@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'enums', loadChildren: './enums/enums.module#EnumsPageModule' },
   { path: 'validate', loadChildren: './validate/validate.module#ValidatePageModule' },
   { path: 'markdown', loadChildren: './markdown/markdown.module#MarkdownPageModule' },
-  { path: 'enums1', loadChildren: './enums1/enums1.module#Enums1PageModule' },
+//  { path: 'enums1', loadChildren: './enums1/enums1.module#Enums1PageModule' },
 ];
 @NgModule({
   imports: [
